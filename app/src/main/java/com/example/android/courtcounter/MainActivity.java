@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Displays the given score for Team A.
+     * Displays the given score for the Home team.
      */
     public void displayForTeamA(int scoreA) {
         TextView scoreView = (TextView) findViewById(R.id.team_a_score);
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Displays the given score for Team B.
+     * Displays the given score for visiting team.
      */
     public void displayForTeamB(int scoreB) {
         TextView scoreView = (TextView) findViewById(R.id.team_b_score);
@@ -59,5 +59,13 @@ public class MainActivity extends AppCompatActivity {
     public void onePointVisitorTeam(View v) {
         currentScoreVistor++;
         displayForTeamB(currentScoreVistor);
+    }
+
+    public void resetScore(View v) {
+        currentScoreVistor = 0;
+        currentScoreHome = 0;
+        displayForTeamB(currentScoreVistor);
+        displayForTeamA(currentScoreHome);
+
     }
 }
