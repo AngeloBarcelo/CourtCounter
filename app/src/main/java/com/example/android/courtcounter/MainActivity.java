@@ -6,8 +6,12 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
     int currentScoreHome = 0;
     int currentScoreVistor = 0;
+    int freeThrow = 1;
+    int basket = 2;
+    int threePointer = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,57 +19,51 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /**
-     * Displays the given score for the Home team.
-     */
+    //Displays the given score for the Home team.
     public void displayForTeamA(int scoreA) {
         TextView scoreView = (TextView) findViewById(R.id.team_a_score);
         scoreView.setText(String.valueOf(scoreA));
     }
 
-    public void twoPointsHomeTeam(View v) {
-        currentScoreHome += 2;
-        displayForTeamA(currentScoreHome);
-    }
-
-    public void threePointsHomeTeam(View v) {
-        currentScoreHome += 3;
-        displayForTeamA(currentScoreHome);
-    }
-
-    public void onePointHomeTeam(View v) {
-        currentScoreHome++;
-        displayForTeamA(currentScoreHome);
-    }
-
-    /**
-     * Displays the given score for visiting team.
-     */
     public void displayForTeamB(int scoreB) {
         TextView scoreView = (TextView) findViewById(R.id.team_b_score);
         scoreView.setText(String.valueOf(scoreB));
     }
 
-    public void twoPointsVisterTeam(View v) {
-        currentScoreVistor += 2;
-        displayForTeamB(currentScoreVistor);
+    public void onePoint(View v) {
+        if (v.getId() == R.id.leftOnePoint) {
+            currentScoreHome += freeThrow;
+            displayForTeamA(currentScoreHome);
+        } else if (v.getId() == R.id.rightOnePoint) {
+            currentScoreVistor += freeThrow;
+            displayForTeamB(currentScoreVistor);
+        }
     }
 
-    public void threePointsVisitorTeam(View v) {
-        currentScoreVistor += 3;
-        displayForTeamB(currentScoreVistor);
+    public void twoPoints(View v) {
+        if (v.getId() == R.id.leftTwoPoints) {
+            currentScoreHome += basket;
+            displayForTeamA(currentScoreHome);
+        } else if ((v.getId() == R.id.rightTwoPoints)) {
+            currentScoreVistor += basket;
+            displayForTeamB(currentScoreVistor);
+        }
     }
 
-    public void onePointVisitorTeam(View v) {
-        currentScoreVistor++;
-        displayForTeamB(currentScoreVistor);
+    public void threePoints(View v) {
+        if (v.getId() == R.id.leftThreePoints) {
+            currentScoreHome += threePointer;
+            displayForTeamA(currentScoreHome);
+        } else if (v.getId() == R.id.rightThreePoints) {
+            currentScoreVistor += threePointer;
+            displayForTeamB(currentScoreVistor);
+        }
     }
 
     public void resetScore(View v) {
-        currentScoreVistor = 0;
         currentScoreHome = 0;
-        displayForTeamB(currentScoreVistor);
+        currentScoreVistor = 0;
         displayForTeamA(currentScoreHome);
-
+        displayForTeamB(currentScoreVistor);
     }
 }

@@ -7,7 +7,8 @@
     <!--Top half of the screen -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout">
 
         <!--Left side of the screen-->
         <LinearLayout
@@ -16,15 +17,17 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
+            <Spinner
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:entries="@array/teams"
                 android:gravity="center_horizontal"
-                android:padding="4dp"
-                android:text="Home Team"
-                android:textColor="#616161"
-                android:textSize="14sp" />
+                android:fontFamily="sans-serif-medium"
+                android:textSize="14sp"
+                android:layout_margin="10dp"
+                android:textColor="#616161">
+
+            </Spinner>
 
             <TextView
                 android:id="@+id/team_a_score"
@@ -37,24 +40,27 @@
                 android:textSize="56sp" />
 
             <Button
+                android:id="@+id/leftTwoPoints"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:onClick="twoPointsHomeTeam"
+                android:layout_margin="16dp"
+                android:onClick="twoPoints"
                 android:text="2 Points" />
 
             <Button
+                android:id="@+id/leftThreePoints"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:onClick="threePointsHomeTeam"
+                android:layout_margin="16dp"
+                android:onClick="threePoints"
                 android:text="3 Points" />
 
             <Button
+                android:id="@+id/leftOnePoint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:onClick="onePointHomeTeam"
+                android:layout_margin="16dp"
+                android:onClick="onePoint"
                 android:text="Free Throw" />
         </LinearLayout>
 
@@ -65,15 +71,16 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
+            <Spinner
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:entries="@array/teams"
                 android:gravity="center_horizontal"
-                android:padding="4dp"
-                android:text="Visiting Team"
-                android:textColor="#616161"
-                android:textSize="14sp" />
+                android:fontFamily="sans-serif-medium"
+                android:textSize="14sp"
+                android:layout_margin="10dp"
+                android:textColor="#616161">
+            </Spinner>
 
             <TextView
                 android:id="@+id/team_b_score"
@@ -86,24 +93,27 @@
                 android:textSize="56sp" />
 
             <Button
+                android:id="@+id/rightTwoPoints"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:onClick="twoPointsVisterTeam"
+                android:layout_margin="16dp"
+                android:onClick="twoPoints"
                 android:text="2 Points" />
 
             <Button
+                android:id="@+id/rightThreePoints"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:onClick="threePointsVisitorTeam"
+                android:layout_margin="16dp"
+                android:onClick="threePoints"
                 android:text="3 Points" />
 
             <Button
+                android:id="@+id/rightOnePoint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:onClick="onePointVisitorTeam"
+                android:layout_margin="16dp"
+                android:onClick="onePoint"
                 android:text="Free Throw" />
 
         </LinearLayout>
@@ -117,6 +127,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="8dp"
         android:onClick="resetScore"
-        android:text="Reset Score" />
+        android:text="Reset Score"
+        android:id="@+id/button" />
 
 </RelativeLayout>
