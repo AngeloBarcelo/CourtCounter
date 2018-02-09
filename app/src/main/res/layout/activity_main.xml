@@ -1,133 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!--Top half of the screen -->
-    <LinearLayout
+    <data>
+
+        <variable
+            name="pointassignmment"
+            class="PointAssignment"
+            type="com.example.android.courtcounter.PointAssignment"></variable>
+
+        <variable
+            name="activitymain"
+            class="ActivityMain"
+            type="com.example.android.courtcounter.MainActivity"></variable>
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout">
+        android:layout_height="match_parent"
+        android:background="@drawable/woodfloor">
 
-        <!--Left side of the screen-->
+        <!--Top half of the screen -->
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <Spinner
-                android:layout_width="wrap_content"
+            <!--Left side of the screen-->
+            <LinearLayout
+                android:id="@id/left_side"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:entries="@array/teams"
-                android:gravity="center_horizontal"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="14sp"
-                android:layout_margin="10dp"
-                android:textColor="#616161">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            </Spinner>
+                <Spinner
+                    android:id="@+id/left_team_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:entries="@array/teams"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/textSize" />
 
-            <TextView
-                android:id="@+id/team_a_score"
-                android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/team_a_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/scorePadding"
+                    android:text="@{String.valueOf(pointassignmment.currentScoreLeft)}"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/scoreSize" />
+
+                <Button
+                    android:id="@+id/leftTwoPoints_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:onClick="changPoints"
+                    android:text="@string/btn_2points"
+                    android:textColor="@color/textColor" />
+
+                <Button
+                    android:id="@+id/leftThreePoints_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:onClick="changPoints"
+                    android:text="@string/btn_3points"
+                    android:textColor="@color/textColor" />
+
+                <Button
+                    android:id="@+id/leftOnePoint_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:onClick="changPoints"
+                    android:text="@string/btn_1point"
+                    android:textColor="@color/textColor" />
+
+                <ImageView
+                    android:id="@+id/left_team_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:src="@drawable/basketball" />
+            </LinearLayout>
+
+            <!--Right side of the screen-->
+            <LinearLayout
+                android:id="@+id/right_side"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:padding="4dp"
-                android:text="0"
-                android:textColor="#000000"
-                android:textSize="56sp" />
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/leftTwoPoints"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:onClick="twoPoints"
-                android:text="2 Points" />
+                <Spinner
+                    android:id="@+id/right_team_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:entries="@array/teams"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/textSize"></Spinner>
 
-            <Button
-                android:id="@+id/leftThreePoints"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:onClick="threePoints"
-                android:text="3 Points" />
+                <TextView
+                    android:id="@+id/team_b_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/scorePadding"
+                    android:text="@{String.valueOf(pointassignmment.currentScoreRight)}"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/scoreSize" />
 
-            <Button
-                android:id="@+id/leftOnePoint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:onClick="onePoint"
-                android:text="Free Throw" />
+                <Button
+                    android:id="@+id/rightTwoPoints_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:onClick="changPoints"
+                    android:text="@string/btn_2points"
+                    android:textColor="@color/textColor" />
+
+                <Button
+                    android:id="@+id/rightThreePoints_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:onClick="changPoints"
+                    android:text="@string/btn_3points"
+                    android:textColor="@color/textColor" />
+
+                <Button
+                    android:id="@+id/rightOnePoint_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:onClick="changPoints"
+                    android:text="@string/btn_1point"
+                    android:textColor="@color/textColor" />
+
+                <ImageView
+                    android:id="@+id/right_team_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginAround"
+                    android:src="@drawable/basketball" />
+            </LinearLayout>
         </LinearLayout>
 
-        <!--Right side of the screen-->
-        <LinearLayout
-            android:layout_width="0dp"
+        <!--Bottom half of the screen-->
+        <Button
+            android:id="@+id/reset_btn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/teams"
-                android:gravity="center_horizontal"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="14sp"
-                android:layout_margin="10dp"
-                android:textColor="#616161">
-            </Spinner>
-
-            <TextView
-                android:id="@+id/team_b_score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:padding="4dp"
-                android:text="0"
-                android:textColor="#000000"
-                android:textSize="56sp" />
-
-            <Button
-                android:id="@+id/rightTwoPoints"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:onClick="twoPoints"
-                android:text="2 Points" />
-
-            <Button
-                android:id="@+id/rightThreePoints"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:onClick="threePoints"
-                android:text="3 Points" />
-
-            <Button
-                android:id="@+id/rightOnePoint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:onClick="onePoint"
-                android:text="Free Throw" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <!--Bottom half of the screen-->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="8dp"
-        android:onClick="resetScore"
-        android:text="Reset Score"
-        android:id="@+id/button" />
-
-</RelativeLayout>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/marginAround"
+            android:onClick="changPoints"
+            android:text="Reset Score"
+            android:textColor="@color/textColor" />
+    </RelativeLayout>
+</layout>
