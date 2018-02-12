@@ -43,33 +43,29 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         points.addPoints(v.getId());
     }
 
-
     @Override
     public boolean onLongClick(View v) {
 
-        String rejectMessage = "Points not allowed to go negative";
-
         //Validates number before calling method. Without it, method allows score to show negative numb
         if (v.getId() == R.id.leftOnePoint_btn && points.getCurrentScoreLeft() < 1) {
-            Toast.makeText(getApplicationContext(), rejectMessage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.reject_message), Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.leftTwoPoints_btn && points.getCurrentScoreLeft() < 2) {
-            Toast.makeText(getApplicationContext(), rejectMessage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.reject_message), Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.leftThreePoints_btn && points.getCurrentScoreLeft() < 3) {
-            Toast.makeText(getApplicationContext(), rejectMessage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.reject_message), Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.rightOnePoint_btn && points.getCurrentScoreRight() < 1) {
-            Toast.makeText(getApplicationContext(), rejectMessage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.reject_message), Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.rightTwoPoints_btn && points.getCurrentScoreRight() < 2) {
-            Toast.makeText(getApplicationContext(), rejectMessage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.reject_message), Toast.LENGTH_SHORT).show();
         } else if (v.getId() == R.id.rightThreePoints_btn && points.getCurrentScoreRight() < 3) {
-            Toast.makeText(getApplicationContext(), rejectMessage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.reject_message), Toast.LENGTH_SHORT).show();
         } else {
             points.subtractPoint(v.getId());
         }
         return true;
     }
 
-    //Changes team logo.
-    //Works on one click then kills app
+    //Changes team logo based on spinner object.
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if (parent.getId() == R.id.left_team_spinner) {
@@ -276,6 +272,6 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-        binding.leftTeamLogo.setImageResource(R.drawable.hornets_logo);
+        binding.leftTeamLogo.setImageResource(R.drawable.basketball);
     }
 }

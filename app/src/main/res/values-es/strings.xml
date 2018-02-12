@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Court Counter</string>
+    <string name="app_name">Contador de la corte</string>
     <string-array name="teams">
-        <item>Home</item>
-        <item>Away</item>
+        <item>Casa</item>
+        <item>Lejos</item>
         <item>Atlanta Hawks</item>
         <item>Boston Celtics</item>
         <item>Brooklyn Nets</item>
@@ -34,8 +34,8 @@
         <item>Utah Jazz</item>
         <item>Washington Wizards</item>
     </string-array>
-    <string name="btn_2points">2 Pointer</string>
-    <string name="btn_3points">3 Pointer</string>
-    <string name="btn_1point">Free Throw</string>
-    <string name="reject_message">Points not allowed to go negative</string>
+    <string name="btn_2points">2 Puntero</string>
+    <string name="btn_3points">3 Puntero</string>
+    <string name="btn_1point">Tiro libre</string>
+    <string name="reject_message">Puntos no permitidos ir negativos</string>
 </resources>
